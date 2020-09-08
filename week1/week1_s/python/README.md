@@ -19,8 +19,10 @@ def solution1():
     print "Output of", solution1.__name__
     print "'Adding 1 function' i.e., 'adds1(x)' returns: ", adds1(test), " for ", test, " as input"
 ```
-* Output of solution1
+```commandline
+$> Output of solution1
 'Adding 1 function' i.e., 'adds1(x)' returns:  5  for  4  as input
+```
 
 ## Solution 2
 ```python
@@ -33,9 +35,10 @@ def solution2():
     print "Output of", solution2.__name__
     print "Reverse of '{}' is '{}' ".format(test, reverse_string(test))
 ```
-* Output of solution2
+```commandline
+$> Output of solution2
 Reverse of 'Hello' is 'olleH' 
-
+```
 ## Solution 3
 ```python
 def solution3():
@@ -91,8 +94,35 @@ def solution3():
 
     print "All asserts of ", solution3.__name__, " passed"
 ```
-* All asserts of  solution3  passed
-
+```commandline
+$> All asserts of  solution3  passed
+```
+## Solution 3a (Improved solution)
+```python
+def solution3a():
+    def tic_tac_toe(board):
+        row_stack = np.array(board)
+        row_stack = np.vstack((row_stack, row_stack.T, np.diag(row_stack), np.diag(np.flip(row_stack, axis=1))))
+        for row in row_stack:
+            if list(row) in [['X', 'X', 'X'], ['O', 'O', 'O']]:
+                return row[0]
+        return 'Draw'
+    assert (tic_tac_toe([
+        ["O", "O", "O"],
+        ["O", "X", "X"],
+        ["E", "X", "X"]]) == "O")
+    assert (tic_tac_toe([
+        ["X", "O", "X"],
+        ["O", "X", "O"],
+        ["E", "E", "X"]]) == "X")
+    assert (tic_tac_toe([
+        ["X", "X", "O"],
+        ["O", "O", "X"],
+        ["X", "X", "O"]]) == "Draw")
+```
+```commandline
+$> All asserts of  solution3a  passed
+```
 ## Solution 4
 ```python
     np.random.seed(22)
@@ -155,7 +185,7 @@ def solution3():
 
     plt.show()
 ```
-* ![working_solution](../imgs/random_walk.png)
+* ![working_solution](../../imgs/random_walk.png)
 
 ## Calling part
 ```python
@@ -163,5 +193,6 @@ if __name__ == '__main__':
     solution1()
     solution2()
     solution3()
+    solutio3a()
     solution4()
 ```

@@ -79,6 +79,28 @@ def solution3():
     print "All asserts of ", solution3.__name__, " passed"
 
 
+def solution3a():
+    def tic_tac_toe(board):
+        row_stack = np.array(board)
+        row_stack = np.vstack((row_stack, row_stack.T, np.diag(row_stack), np.diag(np.flip(row_stack, axis=1))))
+        for row in row_stack:
+            if list(row) in [['X', 'X', 'X'], ['O', 'O', 'O']]:
+                return row[0]
+        return 'Draw'
+    assert (tic_tac_toe([
+        ["O", "O", "O"],
+        ["O", "X", "X"],
+        ["E", "X", "X"]]) == "O")
+    assert (tic_tac_toe([
+        ["X", "O", "X"],
+        ["O", "X", "O"],
+        ["E", "E", "X"]]) == "X")
+    assert (tic_tac_toe([
+        ["X", "X", "O"],
+        ["O", "O", "X"],
+        ["X", "X", "O"]]) == "Draw")
+
+
 def solution4():
     np.random.seed(22)
     VARIANCE = 10
@@ -145,4 +167,5 @@ if __name__ == '__main__':
     solution1()
     solution2()
     solution3()
+    solution3a()
     solution4()
